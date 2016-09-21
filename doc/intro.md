@@ -4,14 +4,15 @@ CLJ-Lauru is a Clojure library for easy parsing and matching URLs.
 
 ## Usage
 
-#### Let's say 
+### Let's say 
 
 we have next kind of URLs:
-"http://some-domain.com/<user-id>/friend/<friend-id>?last-book-id=<last-book-id>&last-page=<last-page>#<paragraph>"
-For example this URL:
-"http://some-domain.com/2345/friend/5467?last-book-id=se56df&last-page=42#as12"
+`"http://some-domain.com/<user-id>/friend/<friend-id>?last-book-id=<last-book-id>&last-page=<last-page>#<paragraph>"`
 
-#### So we should create parsing pattern for it.
+For example this URL:
+`"http://some-domain.com/2345/friend/5467?last-book-id=se56df&last-page=42#as12"`
+
+### So we should create parsing pattern for it.
 
 If we want to get whole info - we can use this pattern:
 
@@ -34,13 +35,13 @@ If we want to apply this pattern to any domain - we can use empty 'host()' part:
       (pattern-info "host(); queryparam(last-book-id=?last-book); fragment(?paragraph)"))
 ```
 
-##### General rules:
+#### General rules:
 
 1. "host(...)" section is always required (and can be empty for "any domain"). Any other sections may be omitted but cannot be empty.
 2. Word prefixed with "?" will be converted to `keyword`. So make sure it is an appropriate name for a Clojure language naming rules.
 3. Only `http` and `https` currently supported. It will change in next versions.
 
-#### Next
+### Next
 
 We'll just call `(recognize )` function for interesting URL:
 
@@ -60,7 +61,7 @@ And it will return this:
 
 That's it.
 
-#### Few more "good" examples
+### Few more "good" examples
 
 For pattern-2:
 
@@ -71,7 +72,7 @@ For pattern-2:
   [:paragraph "as12"]]
 ```
 
-For pattern-2 and "https://some-domain.com/?last-book-id=se56df#as12":
+For pattern-2 and `"https://some-domain.com/?last-book-id=se56df#as12"`:
 
 ```clojure
 =>(recognize pattern-2 "https://some-domain.com/?last-book-id=se56df#as12")
@@ -80,7 +81,7 @@ For pattern-2 and "https://some-domain.com/?last-book-id=se56df#as12":
   [:paragraph "as12"]]
 ```
 
-For pattern-3 and "https://ANOTHER-DOMAIN.ORG/2345/friend/5467?last-book-id=se56df&last-page=42#as12":
+For pattern-3 and `"https://ANOTHER-DOMAIN.ORG/2345/friend/5467?last-book-id=se56df&last-page=42#as12"`:
 
 ```clojure
 =>(recognize pattern-3 "https://ANOTHER-DOMAIN.ORG/2345/friend/5467?last-book-id=se56df&last-page=42#as12")
@@ -89,7 +90,7 @@ For pattern-3 and "https://ANOTHER-DOMAIN.ORG/2345/friend/5467?last-book-id=se56
   [:paragraph "as12"]]
 ```
 
-#### Also (for "bad" URLs)
+### Also (for "bad" URLs)
 
 If URL did not match pattern - `(recognize )` function will return `nil`:
 
@@ -106,7 +107,7 @@ If URL did not match pattern - `(recognize )` function will return `nil`:
 ; etc.
 ```
 
-#### More examples
+### More examples
 
 can be found in "test/core_test/core_test.clj"
 
