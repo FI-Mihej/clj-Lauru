@@ -1,6 +1,6 @@
-# clj-lauru
+# Introduction to clj-lauru
 
-Clojure library for easy parsing and matching URLs.
+CLJ-Lauru is a Clojure library for easy parsing and matching URLs.
 
 ## Usage
 
@@ -110,8 +110,3 @@ If URL did not match pattern - `(recognize )` function will return `nil`:
 
 can be found in "test/core_test/core_test.clj"
 
-## License
-
-Copyright © 2016 ButenkoMS. All rights reserved.
-
-Licensed under the Apache License, Version 2.0.
